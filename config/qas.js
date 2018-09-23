@@ -5,6 +5,7 @@ module.exports = {
         debug: false
     },
     logDir: './logs/',
+    secret: 'r4shhhhhsdharfed-secret',
     mysqlService1: {
         host: '127.0.0.1',
         user: 'root',

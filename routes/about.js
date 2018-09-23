@@ -3,7 +3,7 @@ const about = require('../controllers/about');
 
 
 // 提交信息 
-router.post('/message', async (ctx) => {
+router.post('/api/message/list', async (ctx) => {
     await new about(ctx).list();
 });
 

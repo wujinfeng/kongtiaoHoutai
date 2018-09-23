@@ -10,6 +10,7 @@ const favicon = require('koa-favicon');
 const onerror = require('koa-onerror');
 const log = require('./utils/log');
 const allRoutes = require('./routes/index');
+const jwt = require("koa-jwt2");
 
 const app = new koa();
 //app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -24,6 +25,17 @@ app.use(koaStatic(__dirname + '/public'));
 
 app.use(koaBody());
 
+app.use(jwt({ secret: config.secret }).unless({ path: ["/admin/login"] }));
+app.use(async function(ctx, next) {
+    try {
+      await next();
+    } catch (err) {
+      if (err.name === "UnauthorizedError") {
+        ctx.status = 401;
+        ctx.body = "invalid token...";
+      }
+    }
+  });
 allRoutes(app);
 
 app.on('error', (err) => {

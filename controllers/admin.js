@@ -1,3 +1,5 @@
+const jwt = require("jsonwebtoken");
+const config = require('../config/index');
 const AdminModel = require('../model/AdminModel');
 const util = require('../utils/util');
 class Admin {
@@ -24,6 +26,11 @@ class Admin {
         }
         let result = await this.adminModel.login(params);
         if (result.length > 0) {
+            const token = jwt.sign({
+                username: result[0].username,
+                id: result[0].id
+            }, config.secret);
+            ctx.headers.authorization = "Bearer " + token;
             this._ctx.body = {
                 code: 200,
                 msg: 'ok'
@@ -39,7 +46,7 @@ class Admin {
     // 设置秘密
     async setPassword() {
         let body = this._ctx.request.body;
-        let id = body.id;
+        let id = ctx.state.user.id;
         let password = body.password ? body.password.trim() : '';
         if (!id || !password) {
             return this._ctx.body = {
