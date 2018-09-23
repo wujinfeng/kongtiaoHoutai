@@ -15,9 +15,11 @@ class AirModel extends BaseModel {
         let sqlCount = 'select count(*) as count from ' + self.baseDb + 'air';
         let sqlParam = self.getExecParamByOption(sql, [(page - 1) * pagesize, pagesize]);
         let sqlParamCount = self.getExecParamByOption(sqlCount, '');
+        let list = await self.execSql(sqlParam);
+        let count = await self.execSql(sqlParamCount);
         return {
-            list: self.execSql(sqlParam),
-            count: self.execSql(sqlParamCount)
+            list,
+            count
         };
     }
 
