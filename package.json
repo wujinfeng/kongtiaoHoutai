@@ -1,0 +1,27 @@
+{
+  "name": "koa2_sample",
+  "version": "1.0.0",
+  "description": "koa",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.5.2",
+    "koa-body": "^4.0.4",
+    "koa-compress": "^3.0.0",
+    "koa-favicon": "^2.0.1",
+    "koa-helmet": "^4.0.0",
+    "koa-logger": "^3.2.0",
+    "koa-onerror": "^4.0.0",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "moment": "^2.22.2",
+    "nodemailer": "^4.6.8",
+    "strip-ansi": "^4.0.0",
+    "winston": "^3.0.0",
+    "winston-daily-rotate-file": "^3.3.0"
+  }
+}
