@@ -2,7 +2,7 @@ const jwt = require("koa-jwt");
 const config = ('../config/index');
 const admin = require('./admin');
 const user = require('./user');
-const about = require('./about');
+const message = require('./message');
 const air = require('./air');
 const brand = require('./brand');
 const links = require('./links');
@@ -20,7 +20,7 @@ module.exports = (app) => {
     // });
     app.use(admin.routes()).use(admin.allowedMethods());
     app.use(user.routes()).use(user.allowedMethods());
-    app.use(about.routes()).use(about.allowedMethods());
+    app.use(message.routes()).use(message.allowedMethods());
     app.use(air.routes()).use(air.allowedMethods());
     app.use(brand.routes()).use(brand.allowedMethods());
     app.use(links.routes()).use(links.allowedMethods());

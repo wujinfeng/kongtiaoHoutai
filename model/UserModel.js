@@ -13,13 +13,13 @@ class UserModel extends BaseModel {
         let self = this;
         let sql = 'select * from ' + self.baseDb + 'user limit ?,?';
         let sqlCount = 'select count(*) as count from ' + self.baseDb + 'user';
-        let sqlParam = self.getExecParamByOption(sql, [(page-1)*pagesize, pagesize]);
+        let sqlParam = self.getExecParamByOption(sql, [(page - 1) * pagesize, pagesize]);
         let sqlParamCount = self.getExecParamByOption(sqlCount, '');
         let list = await self.execSql(sqlParam);
         let count = await self.execSql(sqlParamCount);
         return {
-            list,
-            count
+            tableData: list,
+            totalNum: count[0].count || 0
         };
     }
 
