@@ -6,4 +6,10 @@ router.get('/api/user/list', async (ctx)=>{
     await new user(ctx).list();
 });
 
+// 上传图片
+router.post('/api/user/upload', async (ctx)=> {
+    await new user(ctx).upload();
+});
+
+
 module.exports = router;

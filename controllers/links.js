@@ -11,6 +11,7 @@ class Link {
         let body = this._ctx.request.body;
         let params = {};
         let result = await this.linksModel.list(params);
+        console.log(result)
         this._ctx.body = {
             code: 200,
             msg: 'ok',
@@ -43,7 +44,7 @@ class Link {
     }
     // 删除
     async delete() {
-        let id = this._ctx.request.body.id;
+        let id = this._ctx.params.id;
         if (!id) {
             return this._ctx.body = {
                 code: 200,

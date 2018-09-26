@@ -23,7 +23,13 @@ app.use(helmet());
 app.use(compress());
 app.use(koaStatic(__dirname + '/public'));
 
-app.use(koaBody());
+app.use(koaBody({
+    multipart: true,
+    formidable:{
+        uploadDir: config.upload.dir,
+        keepExtensions: true
+    }})
+);
 
 app.use(jwt({secret: config.secret}).unless({path: ["/api/admin/login"]}));
 app.use(async function (ctx, next) {

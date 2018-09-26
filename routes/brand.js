@@ -17,7 +17,7 @@ router.post('/api/brand/edit', async (ctx) => {
 });
 
 // 删除
-router.post('/api/brand/delete', async (ctx) => {
+router.get('/api/brand/delete/:id', async (ctx) => {
     await new brand(ctx).delete();
 });
 

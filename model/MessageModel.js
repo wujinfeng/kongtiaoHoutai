@@ -11,7 +11,7 @@ class MessageModel extends BaseModel {
      */
     list() {
         let self = this;
-        let sql = 'select * from ' + self.baseDb + 'message';
+        let sql = 'select * from ' + self.baseDb + 'message order by ctime desc';
         let sqlParam = self.getExecParamByOption(sql, ''); console.log(sqlParam)
         return self.execSql(sqlParam);
     }

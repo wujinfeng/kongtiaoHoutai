@@ -11,7 +11,7 @@ class NewsModel extends BaseModel {
      */
     list(params) {
         let self = this;
-        let sql = 'select * from ' + self.baseDb + 'news';
+        let sql = 'select * from ' + self.baseDb + 'news order by ctime desc';
         let sqlParam = self.getExecParamByOption(sql, '');
         return self.execSql(sqlParam);
     }

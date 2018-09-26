@@ -11,7 +11,7 @@ class BrandModel extends BaseModel {
      */
     list(params) {
         let self = this;
-        let sql = 'select * from ' + self.baseDb + 'brand';
+        let sql = 'select * from ' + self.baseDb + 'brand order by ctime desc';
         let sqlParam = self.getExecParamByOption(sql, '');
         return self.execSql(sqlParam);
     }

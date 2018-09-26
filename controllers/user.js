@@ -1,4 +1,5 @@
 const UserModel = require('../model/UserModel');
+const config = require('../config/index');
 
 class User {
     constructor(ctx) {
@@ -19,7 +20,18 @@ class User {
             msg: 'ok',
             data: result
         };
+    }
 
+    upload() {
+        let files = this._ctx.request.files;
+        let path = files.image.path;
+        let name = path.slice(path.lastIndexOf('upload_'));
+        let url = config.upload.url + config.upload.prefix + name;
+        this._ctx.body = {
+            code: 200,
+            msg: '',
+            data: {relativeDir: url}
+        };
     }
 
 

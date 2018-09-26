@@ -1,3 +1,4 @@
+const path = require('path');
 module.exports = {
     port: 3000,
     ejs: {
@@ -17,6 +18,10 @@ module.exports = {
     db: {
         'kongtiao': 'mysqlService1'
     },
-
+    upload:{
+        url:'http://127.0.0.1:3000/',
+        dir: path.join(__dirname, '../public/upload/'),
+        prefix:'upload/'
+    }
 
 };

@@ -11,7 +11,7 @@ class UserModel extends BaseModel {
      */
     async list(params, page, pagesize) {
         let self = this;
-        let sql = 'select * from ' + self.baseDb + 'user limit ?,?';
+        let sql = 'select * from ' + self.baseDb + 'user order by ctime desc limit ?,? ';
         let sqlCount = 'select count(*) as count from ' + self.baseDb + 'user';
         let sqlParam = self.getExecParamByOption(sql, [(page - 1) * pagesize, pagesize]);
         let sqlParamCount = self.getExecParamByOption(sqlCount, '');
