@@ -9,7 +9,7 @@ class AdminModel extends BaseModel {
     // 登陆
     login(params) {
         let self = this;
-        let sql = 'select username from ' + self.baseDb + 'admin where password=? and username=?';
+        let sql = 'select id,username from ' + self.baseDb + 'admin where password=? and username=?';
         let sqlParam = self.getExecParamByOption(sql, [params.password, params.username])
         return self.execSql(sqlParam);
     }

@@ -1,6 +1,4 @@
 const UserModel = require('../model/UserModel');
-const util = require('../utils/util');
-const emailUtil = require('../utils/mail');
 
 class User {
     constructor(ctx) {

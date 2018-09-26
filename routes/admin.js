@@ -7,7 +7,7 @@ router.post('/api/admin/login', async (ctx) => {
 });
 
 // 设置秘密
-router.post('/api/admin/setPassword', async (ctx) => {
+router.post('/api/admin/password', async (ctx) => {
     await new admin(ctx).setPassword();
 });
 

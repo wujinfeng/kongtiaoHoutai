@@ -9,7 +9,7 @@ class AirModel extends BaseModel {
     /**
      * 列表
      */
-    list(params, page, pagesize) {
+    async list(params, page, pagesize) {
         let self = this;
         let sql = 'select * from ' + self.baseDb + 'air limit ?,?';
         let sqlCount = 'select count(*) as count from ' + self.baseDb + 'air';
