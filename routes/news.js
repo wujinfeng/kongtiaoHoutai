@@ -17,7 +17,7 @@ router.post('/api/news/edit', async (ctx) => {
 });
 
 // 删除
-router.post('/api/news/delete', async (ctx) => {
+router.get('/api/news/delete/:id', async (ctx) => {
     await new news(ctx).delete();
 });
 
