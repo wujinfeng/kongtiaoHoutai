@@ -11,15 +11,19 @@ class AirModel extends BaseModel {
      */
     async list(params, page, pagesize) {
         let self = this;
-        let sql = 'select * from ' + self.baseDb + 'air  order by ctime desc limit ?,?';
-        let sqlCount = 'select count(*) as count from ' + self.baseDb + 'air';
+        let con = '';
+        if(params.title){
+            con = 'where title like "%'+params.title+'%"';
+        }
+        let sql = 'select * from ' + self.baseDb + 'air '+ con +' order by ctime desc limit ?,?'; console.log(sql)
+        let sqlCount = 'select count(*) as count from ' + self.baseDb + 'air '+ con;
         let sqlParam = self.getExecParamByOption(sql, [(page - 1) * pagesize, pagesize]);
         let sqlParamCount = self.getExecParamByOption(sqlCount, '');
         let list = await self.execSql(sqlParam);
         let count = await self.execSql(sqlParamCount);
         return {
-            list,
-            count
+            tableData:list,
+            totalNum:count[0].count || 0
         };
     }
 

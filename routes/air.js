@@ -17,7 +17,7 @@ router.post('/api/air/edit', async (ctx) => {
 });
 
 // 删除
-router.post('/api/air/delete', async (ctx) => {
+router.get('/api/air/delete/:id', async (ctx) => {
     await new air(ctx).delete();
 });
 

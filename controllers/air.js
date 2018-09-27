@@ -8,11 +8,14 @@ class Air {
 
     // 列表
     async list() {
-        let body = this._ctx.request.body;
-        let page = body.page || 1;
-        let pagesize = body.pagesize || 10;
+        let body = this._ctx.request.query; console.log(body)
+        let page = Number(body.currentPage || 1);
+        let pagesize = Number(body.pageSize || 10);
+        let title = body.title ? body.title.trim():'';
         let params = {};
-
+        if(title){
+            params.title = title
+        }
         let result = await this.airModel.list(params, page, pagesize);
         this._ctx.body = {
             code: 200,
@@ -31,6 +34,7 @@ class Air {
             msg: 'ok'
         };
     }
+
     /**
      * 编辑保存
      */
@@ -44,9 +48,10 @@ class Air {
             msg: 'ok'
         };
     }
+
     // 删除
     async delete() {
-        let id = this._ctx.request.body.id;
+        let id = this._ctx.params.id;
         if (!id) {
             return this._ctx.body = {
                 code: 200,
@@ -63,6 +68,7 @@ class Air {
 
 function airData(body) {
     let data = {
+        type: body.type,
         title: body.title || '',
         name: body.name || '',
         alias: body.alias || '',
@@ -72,8 +78,7 @@ function airData(body) {
         product: body.product || '',
         cooling_mode: body.cooling_mode || '',
         compressor: body.compressor || '',
-        unit_category_host: body.unit_category_host || '',
-        unit_category_air: body.unit_category_air || '',
+        unit_category: body.unit_category || '',
         purpose: body.purpose || '',
         refrigerating_capacity: body.refrigerating_capacity || '',
         heat_production: body.heat_production || '',
@@ -92,7 +97,8 @@ function airData(body) {
         motor_power: body.motor_power || '',
         weight: body.weight || '',
         tubes_num: body.tubes_num || '',
-        residual_pressure: body.residual_pressure || ''
+        residual_pressure: body.residual_pressure || '',
+        working_condition: body.working_condition || ''
     };
     return data;
 }
