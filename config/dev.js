@@ -5,7 +5,7 @@ module.exports = {
         cache: false,
         debug: true
     },
-    logDir: './logs/',
+    logDir: path.join(__dirname, '../logs/') ,
     secret: 'r4shhhhhsdharfed-secret',
     mysqlService1: {
         host: '127.0.0.1',
